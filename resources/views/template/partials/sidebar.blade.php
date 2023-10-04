@@ -4,20 +4,27 @@
 
             <div class="sidenav-menu-heading">Wellcome {{ auth()->user()->nama_lengkap }}</div>
 
-            <x-sidebar-item route="dashboard" title="Beranda" icon="home"/>
-            <x-sidebar-item route="dashboard" title="Kegiatan Siswa" icon="check-square"/>
-            <x-sidebar-item route="dashboard" title="Cetak Kegiatan" icon="printer"/>
-            <x-sidebar-item route="dashboard" title="Daftar Kegiatan" icon="list" />
-            <x-sidebar-item route="dashboard" title="Profil" icon="user" />
+            @if(auth()->user()->role == 'admin')
+                <x-sidebar-item route="dashboard" title="Beranda" icon="home" />
+                <x-sidebar-item route="dashboard" title="Kegiatan Siswa" icon="check-square" />
+                <x-sidebar-item route="dashboard" title="Master Data Siswa" icon="users" />
+                <x-sidebar-item route="dashboard" title="Master Data Kegiatan" icon="archive" />
+                <x-sidebar-item route="dashboard" title="Profil" icon="user" />
 
-            <form action="{{ route('logout') }}" method="POST">
+            @else
+                <x-sidebar-item route="dashboard" title="Kegiatan Siswa" icon="check-square" />
+                <x-sidebar-item route="dashboard" title="Cetak Kegiatan" icon="printer" />
+                <x-sidebar-item route="dashboard" title="Daftar Kegiatan" icon="list" />
+                <x-sidebar-item route="dashboard" title="Profil" icon="user" />
+            @endif
+
+            <form id="logout" action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button class="nav-link" type="submit" onclick="return confirm('Apakah yakin ingin keluar??')">
+                <button class="nav-link" type="submit">
                     <div class="nav-link-icon"><i data-feather="log-out"></i></div>
                     Logout
                 </button>
             </form>
-
 
         </div>
     </div>
@@ -29,3 +36,4 @@
         </div>
     </div>
 </nav>
+
