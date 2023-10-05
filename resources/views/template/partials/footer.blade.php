@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-6 small">SMK Methodist 2 Palembang &copy; {{ date('Y') }}</div>
             <div class="col-md-6 text-md-end small">
-                <a href="https://github.com/ioncrisa2/skpi"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/ioncrisa2/skpi" target="_blank"><i class="fa-brands fa-github"></i></a>
             </div>
         </div>
     </div>
