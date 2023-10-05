@@ -22,7 +22,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nis' => 'required',
+            'username' => 'required',
             'password' => 'required'
         ];
     }
@@ -30,7 +30,7 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nis.required' => 'Username tidak boleh kosong!!',
+            'username.required' => 'Username tidak boleh kosong!!',
             'password.required' => 'Password tidak boleh kosong!!'
         ];
     }

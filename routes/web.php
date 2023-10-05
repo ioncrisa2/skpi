@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\Auth\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +15,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/',fn() => redirect()->route('login'));
-Route::get('/login', [LoginController::class,'login'])->name('login');
-Route::post('/login',[LoginController::class,'authenticated'])->name('login-authenticated');
+Route::get('/login/siswa',fn() => 'This is siswa login')->name('login.siswa');
+Route::get('/',fn() => redirect()->route('login.admin'));
+Route::get('/login/admin', [LoginController::class,'login'])->name('login.admin');
+Route::post('/login/admin',[LoginController::class,'authenticated'])->name('login.admin.authenticated');
 
 Route::middleware('auth')->group(function(){
-    Route::get('dashboard',DashboardController::class)->name('dashboard');
+    Route::prefix('admin')->group(function(){
+        Route::get('dashboard',DashboardController::class)->name('admin.dashboard');
+    });
     Route::post('logout',LogoutController::class)->name('logout');
 });

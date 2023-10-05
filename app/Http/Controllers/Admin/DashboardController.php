@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -12,6 +12,6 @@ class DashboardController extends Controller
      */
     public function __invoke(): View
     {
-        return view('dashboard');
+        return view('admin.dashboard');
     }
 }

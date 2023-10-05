@@ -16,10 +16,8 @@ class UserSeeder extends Seeder
     {
         $user = new User();
 
-        $user->nama_lengkap = 'adminsmk';
-        $user->nis = 'admin';
+        $user->username = 'admin';
         $user->password = Hash::make('password');
-        $user->role = 'admin';
         $user->save();
     }
 }

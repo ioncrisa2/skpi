@@ -50,7 +50,7 @@
     @yield('script')
     <script>
         $(document).ready(function () {
-            $('#datatablesSimple').DataTable();
+            $('#datatables').DataTable();
         });
     </script>
 </body>
