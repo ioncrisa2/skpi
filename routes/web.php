@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\LogoutController;
+use App\Http\Controllers\Admin\KegiatanController;
+use App\Http\Controllers\Admin\KegiatanSiswaController;
 use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Siswa\AuthController;
+use App\Http\Controllers\Admin\MasterDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +28,12 @@ Route::post('/login/admin',[LoginController::class,'authenticated'])->name('logi
 Route::middleware('auth')->group(function(){
     Route::prefix('admin')->group(function(){
         Route::get('dashboard',DashboardController::class)->name('admin.dashboard');
-        Route::get('kegiatan-siswa',fn() => 'kegiatan siswa')->name('admin.kegiatan-siswa');
-        Route::get('data-kegiatan',fn() => 'master data kegiatan siswa')->name('admin.data-kegiatan');
+        Route::get('kegiatan-siswa',[KegiatanSiswaController::class,'index'])->name('admin.kegiatan-siswa');
+        Route::get('data-kegiatan',[MasterDataController::class,'index'])->name('admin.master-data-kegiatan');
+        // siswa route
         Route::get('siswa',[SiswaController::class,'index'])->name('admin.siswa');
+        Route::get('siswa/create',[SiswaController::class,'create'])->name('admin.siswa-create');
+        Route::post('siswa/store',[SiswaController::class,'store'])->name('admin.siswa-store');
     });
     Route::post('logout',LogoutController::class)->name('logout');
 });

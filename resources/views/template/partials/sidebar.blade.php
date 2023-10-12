@@ -7,7 +7,7 @@
                 <x-sidebar-item route="admin.dashboard" title="Beranda" icon="home" />
                 <x-sidebar-item route="admin.kegiatan-siswa" title="Kegiatan Siswa" icon="check-square" />
                 <x-sidebar-item route="admin.siswa" title="Master Data Siswa" icon="users" />
-                <x-sidebar-item route="admin.data-kegiatan" title="Master Data Kegiatan" icon="archive" />
+                <x-sidebar-item route="admin.master-data-kegiatan" title="Master Data Kegiatan" icon="archive" />
 
 
             <form action="{{ route('logout') }}" method="POST">
